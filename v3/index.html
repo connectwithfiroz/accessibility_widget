@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility Widget Integration Guide</title>
+
+    <!-- [OPTIONAL] Bootstrap CSS - Added only for host page layout; NOT required by the widget -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- [REQUIRED STEP 1] Accessibility Widget Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="public/accessibility/css/accessibility-style.css"
+    />
+
+    <!-- [REQUIRED STEP 2] Authentication Token Meta Tag -->
+    <!-- Pass your backend authentication token in the 'content' attribute below -->
+    <meta name="acc_tkn" content="YOUR_ACCESS_TOKEN_HERE" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <!-- Navigation Header -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm sticky-top"
+    >
+      <div class="container">
+        <a class="navbar-brand font-weight-bold" href="#home"
+          >Accessibility Widget</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#how-to-use">How to Use</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <header id="home" class="py-5 bg-white border-bottom text-center">
+      <div class="container">
+        <h1 class="display-4 font-weight-bold text-primary">
+          Accessibility Widget Integration
+        </h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px">
+          A lightweight, plug-and-play accessibility engine for web
+          applications. Easily integrate custom contrast, screen reader tools,
+          and interactive accessibility controls.
+        </p>
+        <!-- <div id="accessabilityBtnSection">
+          <a class="btn btn-outline-success">Try Accessability</a>
+        </div> -->
+      </div>
+    </header>
+
+    <main class="container my-5">
+      <div id="accessabilityBtnSection"></div>
+      <!-- How to Use Section -->
+      <section id="how-to-use" class="row justify-content-center pt-4">
+        <div class="col-lg-10">
+          <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white font-weight-bold">
+              Integration Guide &amp; Configuration Workflow
+            </div>
+            <div class="card-body">
+              <!-- Step 1 -->
+              <div class="mb-4">
+                <h5>
+                  <span class="badge badge-primary mr-2">Step 1</span> Add Token
+                  Meta Tag
+                </h5>
+                <p class="mb-1 text-secondary">
+                  Add the <code>acc_tkn</code> meta tag inside your page's
+                  <code>&lt;head&gt;</code> section to pass authentication to
+                  the backend API:
+                </p>
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>&lt;meta name="acc_tkn" content="YOUR_ACCESS_TOKEN_HERE"&gt;</code></pre>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="mb-4">
+                <h5>
+                  <span class="badge badge-primary mr-2">Step 2</span> Define
+                  Target Button Container
+                </h5>
+                <p class="mb-1 text-secondary">
+                  Place an empty <code>&lt;div&gt;</code> element with a unique
+                  ID wherever you want the widget trigger button to load:
+                </p>
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>&lt;!-- Target Container --&gt;
+&lt;div id="accessabilityBtnSection"&gt;&lt;/div&gt;</code></pre>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="mb-4">
+                <h5>
+                  <span class="badge badge-primary mr-2">Step 3</span> Configure
+                  Widget Settings
+                </h5>
+                <p class="mb-1 text-secondary">
+                  In <code>public/accessibility_config.js</code>, configure the
+                  trigger button markup, background color, target container ID,
+                  and backend authentication endpoint:
+                </p>
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>var isPageLoaded = false;
+var isAllAjaxComplete = true; // Set to false if you track global AJAX requests
+var isAccessabilityRendered = false;
+
+const accessabilityBtnHtml = `&lt;button class="btn btn-primary" type="button" title="Accessibility Features"&gt;Accessibility&lt;/button&gt;`;
+
+const CONFIGURATION_OPTIONS = {
+    backgroundColor: '#FF9800',
+    accessabilityBtnContainer: 'accessabilityBtnSection', // Container ID
+    // accessabilityBtn : 'Accessability', //pass any html or text (If you'll not pass anything then default btn will appear)
+    authentication_check_api_url: 'http://localhost/accessability_widget/v3/api/index.php/authenticate'
+};</code></pre>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="mb-2">
+                <h5>
+                  <span class="badge badge-primary mr-2">Step 4</span> Include
+                  JavaScript Modules (Strict Order)
+                </h5>
+                <p class="mb-1 text-secondary">
+                  Include core dependencies at the end of the
+                  <code>&lt;body&gt;</code> tag in this exact sequence:
+                </p>
+                <pre
+                  class="bg-dark text-light p-3 rounded"
+                ><code>&lt;!-- 1. Accessibility Core Engine --&gt;
+&lt;script src="public/accessibility/js/accessibility.js"&gt;&lt;/script&gt;
+
+&lt;!-- 2. Widget Configuration &amp; Auto-Initialization --&gt;
+&lt;script class="erasableJsSrc" src="public/accessibility_config.js"&gt;&lt;/script&gt;
+
+&lt;!-- 3. Draggable Component Module (Uses draggable/FDraggable.js under the hood) --&gt;
+&lt;script class="erasableJsSrc" type="module" src="public/draggable/draggable.js"&gt;&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center py-2" id="footer">
+      <p>
+        Developed by
+        <a href="https://www.linkedin.com/in/hifiroz/" target="_blank"
+          ><strong>Firoz Ansari</strong></a
+        >
+      </p>
+    </footer>
+
+    <!-- [OPTIONAL] Bootstrap & jQuery Scripts - Added only for host page layout; NOT required by the widget -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- ================================================================= -->
+    <!-- [REQUIRED STEP 4] ACCESSIBILITY WIDGET SCRIPTS (LOAD IN THIS ORDER) -->
+    <!-- ================================================================= -->
+
+    <!-- 1. Accessibility Core Engine -->
+    <script src="public/accessibility/js/accessibility.js"></script>
+
+    <!-- 2. Widget Configuration & Auto-Initialization -->
+    <script class="erasableJsSrc" src="public/accessibility_config.js"></script>
+
+    <!-- 3. Draggable Component Module (Uses draggable/FDraggable.js under the hood) -->
+    <script
+      class="erasableJsSrc"
+      type="module"
+      src="public/draggable/draggable.js"
+    ></script>
+  </body>
+</html>
