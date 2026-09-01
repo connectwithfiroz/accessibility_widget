@@ -14,7 +14,7 @@
     <!-- [REQUIRED STEP 1] Accessibility Widget Stylesheet -->
     <link
       rel="stylesheet"
-      href="v4/public/accessibility/css/accessibility-style.css"
+      href="v4/public/accessibility/css/accesibility-style.min.css"
     />
 
     <!-- [REQUIRED STEP 2] Authentication Token Meta Tag -->
@@ -119,9 +119,9 @@ project-root/
         ├── accessibility_config.js     <-- [CONFIG] Set your custom parameters & API endpoints here
         ├── accessibility/
         │   ├── css/
-        │   │   └── accessibility-style.css
+        │   │   └── accesibility-style.min.css
         │   └── js/
-        │       ├── accessibility.js    <-- Core unminified engine source
+        │       ├── accessibility.min.js    <-- Core unminified engine source
         │       └── accessibility.min.js<-- [RECOMMENDED] Production-ready minified engine script
         └── draggable/
             ├── draggable.js            <-- Module entry point loaded in index.html
@@ -166,8 +166,12 @@ const accessabilityBtnHtml = `&lt;button class="btn btn-primary" type="button" t
 
 const CONFIGURATION_OPTIONS = {
     backgroundColor: '#FF9800',
+    // [OPTIONAL] Default width is 400px. Accepts any valid CSS unit (e.g., "400px", "100vw").
+    // widget_width: "400px",  
+
+    // [OPTIONAL] Default height is max-content. Accepts any valid CSS unit (e.g., "500px", "80vh").
+    // widget_height: "80vh", 
     accessabilityBtnContainer: 'accessabilityBtnSection',
-    authentication_check_api_url: 'http://localhost/accessability_widget/v4/api/index.php/authenticate'
 };</code></pre>
               </div>
 
@@ -184,7 +188,7 @@ const CONFIGURATION_OPTIONS = {
                 <pre
                   class="bg-dark text-light p-3 rounded"
                 ><code>&lt;!-- 1. Accessibility Core Engine --&gt;
-&lt;script src="v4/public/accessibility/js/accessibility.js"&gt;&lt;/script&gt;
+&lt;script src="v4/public/accessibility/js/accessibility.min.js"&gt;&lt;/script&gt;
 
 &lt;!-- 2. Widget Configuration &amp; Auto-Initialization --&gt;
 &lt;script class="erasableJsSrc" src="v4/public/accessibility_config.js"&gt;&lt;/script&gt;
@@ -213,7 +217,7 @@ const CONFIGURATION_OPTIONS = {
     &lt;title&gt;Your Web Page&lt;/title&gt;
 
     &lt;!-- 1. Accessibility Widget Stylesheet --&gt;
-    &lt;link rel="stylesheet" href="v4/public/accessibility/css/accessibility-style.css" /&gt;
+    &lt;link rel="stylesheet" href="v4/public/accessibility/css/accesibility-style.min.css" /&gt;
   &lt;/head&gt;
   &lt;body&gt;
     &lt;!-- Accessibility Trigger Container --&gt;
@@ -222,7 +226,7 @@ const CONFIGURATION_OPTIONS = {
     &lt;!-- Your regular page content goes here --&gt;
 
     &lt;!-- 2. Core Accessibility Engine --&gt;
-    &lt;script src="v4/public/accessibility/js/accessibility.js"&gt;&lt;/script&gt;
+    &lt;script src="v4/public/accessibility/js/accessibility.min.js"&gt;&lt;/script&gt;
 
     &lt;!-- 3. Widget Configuration &amp; Auto-Initialization --&gt;
     &lt;script class="erasableJsSrc" src="v4/public/accessibility_config.js"&gt;&lt;/script&gt;

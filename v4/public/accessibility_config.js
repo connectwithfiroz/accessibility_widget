@@ -9,18 +9,17 @@ const accessabilityBtnHtml = `<a class="btn btn-outline-primary">Try Accessabili
 const CONFIGURATION_OPTIONS = {
     backgroundColor: '#1993da',
 
-    // widget_width: "400px",  // in any valid value like 400px, 100vh
-    // widget_height: "80vh", // in any valid value like 400px, 100vh
+    // [OPTIONAL] Default width is 400px. Accepts any valid CSS unit (e.g., "400px", "100vw").
+    // widget_width: "400px",  
 
-    accessabilityBtnContainer: 'accessabilityBtnSection', // Container ID
+    // [OPTIONAL] Default height is max-content. Accepts any valid CSS unit (e.g., "500px", "80vh").
+    // widget_height: "80vh", 
 
-    // accessabilityBtn: 'Accessability',
-    // Pass any HTML or text.
-    // If you don't pass anything, the default button will appear.
+    accessabilityBtnContainer: 'accessabilityBtnSection', // Container ID where trigger button loads
 
-    authentication_check_api_url:
-        'http://localhost/accessability_widget/v3/api/index.php/authenticate'
-        // BACKEND PROTECTION IS ACTIVATED
+    // [OPTIONAL] Pass custom text or HTML markup for the trigger button.
+    // If omitted, the default trigger button will be used.
+    // accessabilityBtn: accessabilityBtnHtml, 
 };
 
 
@@ -52,4 +51,4 @@ function intervalFunction() {
 }
 
 let renderAccessInterval = setInterval(intervalFunction, 300);
-cleanupConfigScripts();               // Clean up script tags for security
+            // Clean up script tags for security
