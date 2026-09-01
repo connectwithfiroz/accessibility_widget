@@ -2099,6 +2099,21 @@ function init(params) {
       params.backgroundColor,
     );
   }
+  if (params.widget_width) {
+    const main_w_container = document.getElementById("main_w_container");
+
+    if (main_w_container) {
+      main_w_container.style.width = params.widget_width;
+    }
+  }
+
+  if (params.widget_height) {
+    const main_w_container = document.getElementById("main_w_container");
+
+    if (main_w_container) {
+      main_w_container.style.height = params.widget_height;
+    }
+  }
   //--- THEME SET START END ---
 }
 
@@ -2131,9 +2146,10 @@ function addAccessabilityHTML(params) {
         btnLocation.innerHTML = `<div id="widget-custom-trigger" class="widget-custom-trigger"  aria-label="Accessibility Widget" data-trigger="true" aria-haspopup="dialog">
               ${accessabilityBtnText}
           </div>`;
-		
-		const crd = 'PHA+RGV2ZWxvcGVkIGJ5PGEgaHJlZj0iaHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2hpZmlyb3ovIiB0YXJnZXQ9Il9ibGFuayI+PHN0cm9uZz5GaXJveiBBbnNhcmk8L3N0cm9uZz48L2E+PC9wPg==';
-		console.info((crd))
+
+        const crd =
+          "PHA+RGV2ZWxvcGVkIGJ5PGEgaHJlZj0iaHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2hpZmlyb3ovIiB0YXJnZXQ9Il9ibGFuayI+PHN0cm9uZz5GaXJveiBBbnNhcmk8L3N0cm9uZz48L2E+PC9wPg==";
+        console.info(crd);
       }
     } else {
       document.body.insertAdjacentHTML("afterbegin", widgetBtn);

@@ -10,6 +10,11 @@
   /* --color1:#fff; */
   /* --color2:#000; */
 }
+#main_w_container{
+  height: auto;
+  width: max-content;
+  overflow: auto;
+}
 .custom-range{
   width: 100%;
 }
@@ -216,7 +221,6 @@
   background: var(--color-white);
   max-width: 500px;
   /* min-height: 100%; */
-  max-height: 500px;
   width: 100%;
   filter: drop-shadow(0 15px 30px rgb(2 2 2 / 36%));
   right: 0;

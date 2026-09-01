@@ -4,13 +4,25 @@
 var isPageLoaded = false;
 var isAllAjaxComplete = true; // Set to false if you track global AJAX requests
 var isAccessabilityRendered = false;
-const accessabilityBtnHtml = `<a  class="btn btn-outline-primary">Try Accessability</a>`;
+const accessabilityBtnHtml = `<a class="btn btn-outline-primary">Try Accessability</a>`;
+
 const CONFIGURATION_OPTIONS = {
     backgroundColor: '#1993da',
+
+    // widget_width: "400px",  // in any valid value like 400px, 100vh
+    // widget_height: "80vh", // in any valid value like 400px, 100vh
+
     accessabilityBtnContainer: 'accessabilityBtnSection', // Container ID
-    // accessabilityBtn : 'Accessability', //pass any html or text (If you'll not pass anything then default btn will appear)
-    authentication_check_api_url: 'http://localhost/accessability_widget/v3/api/index.php/authenticate' //BACKEND PROTECTION IS ACTIVATED 
+
+    // accessabilityBtn: 'Accessability',
+    // Pass any HTML or text.
+    // If you don't pass anything, the default button will appear.
+
+    authentication_check_api_url:
+        'http://localhost/accessability_widget/v3/api/index.php/authenticate'
+        // BACKEND PROTECTION IS ACTIVATED
 };
+
 
 
 // 1. Mark page as loaded once DOM is ready
