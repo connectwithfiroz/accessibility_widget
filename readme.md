@@ -52,7 +52,7 @@ Add the required stylesheet inside your `<head>` tag and script modules right be
     <title>Your Web Page</title>
 
     <!-- 1. Accessibility Widget Stylesheet (Required) -->
-    <link rel="stylesheet" href="v3/public/accessibility/css/accessibility-style.css" />
+    <link rel="stylesheet" href="v4/public/accessibility/css/accessibility-style.css" />
   </head>
   <body>
     <div id="accessabilityBtnSection"></div>
@@ -60,12 +60,12 @@ Add the required stylesheet inside your `<head>` tag and script modules right be
     <!-- Your regular page content goes here -->
 
     <!-- 2. Core Accessibility Engine -->
-    <script src="v3/public/accessibility/js/accessibility.js"></script>
+    <script src="v4/public/accessibility/js/accessibility.min.js"></script>
 
     <!-- 3. Widget Configuration & Auto-Initialization -->
-    <script class="erasableJsSrc" src="v3/public/accessibility_config.js"></script>
+    <script class="erasableJsSrc" src="v4/public/accessibility_config.js"></script>
 
     <!-- 4. Draggable Module -->
-    <script class="erasableJsSrc" type="module" src="v3/public/draggable/draggable.js"></script>
+    <script class="erasableJsSrc" type="module" src="v4/public/draggable/draggable.js"></script>
   </body>
 </html>
